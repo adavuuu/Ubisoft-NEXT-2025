@@ -1,0 +1,1 @@
+/usr/bin/cc  -lstdc++ CMakeFiles/Game.dir/src/Game/Core/UI/UIElement.cpp.obj CMakeFiles/Game.dir/src/Game/Core/UI/UIManager.cpp.obj CMakeFiles/Game.dir/src/Game/Core/UI/UIText.cpp.obj CMakeFiles/Game.dir/src/Game/GameTest.cpp.obj -o Game   -L/opt/homebrew/lib  libContestAPI.a -lSDL3 -framework GLUT -framework OpenGL

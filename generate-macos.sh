@@ -1,0 +1,1 @@
+cmake -B build/macos -DCMAKE_TOOLCHAIN_FILE=./TC-apple.cmake

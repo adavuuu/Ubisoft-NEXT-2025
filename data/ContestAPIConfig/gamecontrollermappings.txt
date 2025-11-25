@@ -1,0 +1,7 @@
+#File that contains game controller mappings for SDL3
+#Currently only relevant on MacOS version
+#Can use this file to add custom mappings for your controller to match intended standard controls
+#See this link for additional resources on file format, tooling: https://github.com/mdqinc/SDL_GameControllerDB
+
+050000695e040000130b00003f066d04,XBOX One Controller,a:b0,b:b1,x:b6,y:b7,back:b4,guide:b2,start:b3,leftstick:b13,rightstick:b16,leftshoulder:b12,rightshoulder:b15,dpup:b11,dpdown:b8,dpleft:b9,dpright:b10,misc1:b5,leftx:a0,lefty:a1,rightx:a3,righty:a4~,lefttrigger:+b14,righttrigger:+b17,crc:6900,platform:macOS,
+050000695e040000130b00003f066d04,XBOX One Controller,a:b0,b:b1,x:b6,y:b7,back:b4,guide:b2,start:b3,leftstick:b13,rightstick:b16,leftshoulder:b12,rightshoulder:b15,dpup:b11,dpdown:b8,dpleft:b9,dpright:b10,misc1:b5,leftx:a0,lefty:a1,rightx:a3,righty:a4~,lefttrigger:+b14,righttrigger:+b17,crc:6900,platform:Mac OS X,

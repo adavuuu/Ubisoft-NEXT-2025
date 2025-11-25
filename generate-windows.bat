@@ -1,0 +1,1 @@
+cmake -B build/win64 -DCMAKE_TOOLCHAIN_FILE=./TC-windows.cmake

@@ -1,0 +1,5 @@
+/Users/adavu/Desktop/UbisoftNEXT/NEXT-2025-Programming-API/build/macos/CMakeFiles/ContestAPI.dir
+/Users/adavu/Desktop/UbisoftNEXT/NEXT-2025-Programming-API/build/macos/CMakeFiles/Game.dir
+/Users/adavu/Desktop/UbisoftNEXT/NEXT-2025-Programming-API/build/macos/CMakeFiles/run.dir
+/Users/adavu/Desktop/UbisoftNEXT/NEXT-2025-Programming-API/build/macos/CMakeFiles/edit_cache.dir
+/Users/adavu/Desktop/UbisoftNEXT/NEXT-2025-Programming-API/build/macos/CMakeFiles/rebuild_cache.dir
