@@ -2,33 +2,28 @@
 // UIManager.h
 // Manages all UI elements: initialization, updating, and drawing.
 //-----------------------------------------------------------------------------
-#ifndef _UIMANAGER_H_
-#define _UIMANAGER_H_
+#pragma once
 
 #include <vector>
+
 #include "UIElement.h"
 
-//-----------------------------------------------------------------------------
-// CUIManager
-//-----------------------------------------------------------------------------
-class CUIManager
+class UIManager
 {
 public:
 
-    CUIManager();
-    ~CUIManager();
+    UIManager();
+    ~UIManager() = default;
 
     bool Initialize();
     void Shutdown();
 
-    void AddElement(CUIElement* element);
-    void RemoveElement(CUIElement* element);
+    void AddElement(const std::shared_ptr<UIElement>& element);
+    void RemoveElement(const std::shared_ptr<UIElement>& element);
 
     void Update(float deltaTime);
     void Draw();
 
 private:
-    std::vector<CUIElement*> m_elements;
+    std::vector<std::shared_ptr<UIElement>> m_elements;
 };
-
-#endif

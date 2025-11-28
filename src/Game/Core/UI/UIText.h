@@ -2,33 +2,28 @@
 // UIText.h
 // Represents a simple on-screen text element.
 //-----------------------------------------------------------------------------
-#ifndef _UITEXT_H_
-#define _UITEXT_H_
+#pragma once
 
-#include "UIElement.h"
 #include <string>
 
-//-----------------------------------------------------------------------------
-// CUIText
-//-----------------------------------------------------------------------------
-class CUIText : public CUIElement
+#include "UIElement.h"
+
+class UIText : public UIElement
 {
 public:
 
-    CUIText();
-    CUIText(const std::string& text, float x, float y);
-    virtual ~CUIText();
-
-    virtual bool Initialize() override;
-    virtual void Update(float deltaTime) override;
-    virtual void Draw() override;
+    UIText(const std::string& text, float x, float y);
+    ~UIText() override = default;
 
     void SetText(const std::string& text) { m_text = text; };
     void SetColor(unsigned char r, unsigned char g, unsigned char b) { m_red = r; m_green = g; m_blue = b; };
 
+     // Overrides from UIElement
+    void Update(float deltaTime) override;
+    void Draw() override;
+
 protected:
     std::string m_text;
+
     unsigned char m_red, m_green, m_blue; // color
 };
-
-#endif

@@ -1,41 +1,26 @@
-///////////////////////////////////////////////////////////////////////////////
-// Filename: UIManager.cpp
-// Manages all UI elements: initialization, updating, and drawing.
-///////////////////////////////////////////////////////////////////////////////
-
-//-----------------------------------------------------------------------------
 #include "UIManager.h"
 #include "../../../ContestAPI/app.h"
-//-----------------------------------------------------------------------------
 
-CUIManager::CUIManager()
+UIManager::UIManager()
 {
 }
 
-CUIManager::~CUIManager()
+UIManager::~UIManager()
 {
     Shutdown();
 }
 
-bool CUIManager::Initialize()
+bool UIManager::Initialize()
 {
     return true; 
 }
 
-void CUIManager::Shutdown()
+void UIManager::Shutdown()
 {
-    for (auto* element : m_elements)
-    {
-        if (element)
-        {
-            delete element;
-        }
-    }
-
     m_elements.clear();
 }
 
-void CUIManager::AddElement(CUIElement* element)
+void UIManager::AddElement(const std::shared_ptr<UIElement>& element)
 {
     if (!element)
         return;
@@ -44,33 +29,29 @@ void CUIManager::AddElement(CUIElement* element)
     m_elements.push_back(element);
 }
 
-void CUIManager::RemoveElement(CUIElement *element)
+void UIManager::RemoveElement(const std::shared_ptr<UIElement>& element)
 {
-    for (auto it = m_elements.begin(); it != m_elements.end(); ++it)
+    auto it = std::find(m_elements.begin(), m_elements.end(), element);
+    if (it != m_elements.end())
     {
-        if (*it == element)
-        {
-            delete *it;
-            m_elements.erase(it);
-            break;
-        }
+        m_elements.erase(it); // shared_ptr handles deletion
     }
 }
 
-void CUIManager::Update(float deltaTime)
+void UIManager::Update(float deltaTime)
 {
-    for (auto* element : m_elements)
+    for (auto& element : m_elements)
     {
-        if (element->isVisible())
+        if (element && element->isVisible())
             element->Update(deltaTime);
     }
 }
 
-void CUIManager::Draw()
+void UIManager::Draw()
 {
-    for (auto* element : m_elements)
+    for (auto& element : m_elements)
     {
-        if (element->isVisible())
+        if (element && element->isVisible())
             element->Draw();
     }
 }

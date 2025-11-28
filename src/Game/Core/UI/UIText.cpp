@@ -1,23 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// Filename: UIText.cpp
-// Represents a simple on-screen text element.
-///////////////////////////////////////////////////////////////////////////////
-
-//-----------------------------------------------------------------------------
-#include "UIText.h"
 #include <iostream>
+
+#include "UIText.h"
 #include "../../../ContestAPI/app.h"
-//-----------------------------------------------------------------------------
 
-CUIText::CUIText()
-    : m_text("")
-    , m_red(255)
-    , m_green(255)
-    , m_blue(255)
-{
-}
-
-CUIText::CUIText(const std::string& text, float x, float y)
+UIText::UIText(const std::string& text, float x, float y)
     : m_text(text)
     , m_red(255)
     , m_green(255)
@@ -27,23 +13,13 @@ CUIText::CUIText(const std::string& text, float x, float y)
     m_ypos = y;
 }
 
-CUIText::~CUIText()
+void UIText::Update(float deltaTime)
 {
-}
-
-bool CUIText::Initialize()
-{
-    // TODO: load fonts here
-    return true;
-}
-
-void CUIText::Update(float deltaTime)
-{
+    // TODO: Placeholder for text animations (fade, typewriter, etc.)
     (void)deltaTime;
-    // Placeholder for text animations (fade, typewriter, etc.)
 }
 
-void CUIText::Draw()
+void UIText::Draw()
 {
     if (!m_visible)
         return;
