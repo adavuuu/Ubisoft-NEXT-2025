@@ -12,7 +12,7 @@ class UIText : public UIElement
 {
 public:
 
-    UIText(const std::string& text, float x, float y);
+    UIText(const std::string& text);
     ~UIText() override = default;
 
     void SetText(const std::string& text) { m_text = text; };

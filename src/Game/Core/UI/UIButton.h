@@ -12,7 +12,7 @@
 class UIButton : public UIElement 
 {
 public:
-    UIButton(const std::string& text, float x, float y);
+    UIButton(const std::string& text);
     ~UIButton() override = default;
 
     void SetText(const std::string& text) { m_text = text; };

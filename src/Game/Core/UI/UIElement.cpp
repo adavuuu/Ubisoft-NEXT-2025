@@ -1,3 +1,4 @@
+#include <iostream>
 #include "UIElement.h"
 
 UIElement::UIElement()
@@ -12,4 +13,12 @@ UIElement::UIElement()
 bool UIElement::Initialize()
 {
     return true;
+}
+
+bool UIElement::IsMouseInside(float mouse_x, float mouse_y) const
+{
+    return mouse_x >= m_xpos &&
+           mouse_x <= m_xpos + m_width &&
+           mouse_y >= m_ypos &&
+           mouse_y <= m_ypos + m_height;
 }

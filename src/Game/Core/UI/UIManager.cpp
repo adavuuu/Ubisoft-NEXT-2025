@@ -1,13 +1,10 @@
+#include <iostream>
+
 #include "UIManager.h"
 #include "../../../ContestAPI/app.h"
 
 UIManager::UIManager()
 {
-}
-
-UIManager::~UIManager()
-{
-    Shutdown();
 }
 
 bool UIManager::Initialize()
@@ -18,6 +15,28 @@ bool UIManager::Initialize()
 void UIManager::Shutdown()
 {
     m_elements.clear();
+}
+
+void UIManager::Update(float deltaTime)
+{
+    for (auto& element : m_elements)
+    {
+        if (element && element->isVisible())
+        {
+            element->Update(deltaTime);
+        }
+    }
+}
+
+void UIManager::Draw()
+{
+    for (auto& element : m_elements)
+    {
+        if (element && element->isVisible())
+        {
+            element->Draw();
+        }
+    }
 }
 
 void UIManager::AddElement(const std::shared_ptr<UIElement>& element)
@@ -38,20 +57,37 @@ void UIManager::RemoveElement(const std::shared_ptr<UIElement>& element)
     }
 }
 
-void UIManager::Update(float deltaTime)
+void UIManager::HandleMouseMove(float mouse_x, float mouse_y)
 {
     for (auto& element : m_elements)
     {
-        if (element && element->isVisible())
-            element->Update(deltaTime);
+        if (!element->isVisible()) 
+        {
+            continue;
+        }
+
+        bool inside = element->IsMouseInside(mouse_x, mouse_y);
+
+        if (inside)
+        {
+            element->OnHover();
+        }
+        else
+        {
+            element->OnUnhover();
+        }
     }
 }
 
-void UIManager::Draw()
+void UIManager::HandleMouseClick(float mouse_x, float mouse_y)
 {
     for (auto& element : m_elements)
     {
-        if (element && element->isVisible())
-            element->Draw();
+        if (element->isVisible() && element->IsMouseInside(mouse_x, mouse_y))
+        {
+            element->OnClick();
+            element->OnRelease();
+            return; 
+        }
     }
 }

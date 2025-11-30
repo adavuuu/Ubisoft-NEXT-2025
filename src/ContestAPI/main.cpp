@@ -230,7 +230,7 @@ namespace Internal
 
 	bool IsMousePressed(int button)
 	{
-		return gMouseButtonState[button] = GLUT_DOWN;
+		return gMouseButtonState[button] == GLUT_DOWN;
 	}
 
 }

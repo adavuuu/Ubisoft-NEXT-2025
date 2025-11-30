@@ -1,16 +1,12 @@
-#include <iostream>
-
 #include "UIText.h"
 #include "../../../ContestAPI/app.h"
 
-UIText::UIText(const std::string& text, float x, float y)
+UIText::UIText(const std::string& text)
     : m_text(text)
     , m_red(255)
     , m_green(255)
     , m_blue(255)
 {
-    m_xpos = x;
-    m_ypos = y;
 }
 
 void UIText::Update(float deltaTime)

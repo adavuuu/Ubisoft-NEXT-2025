@@ -3,7 +3,7 @@
 #include "UIButton.h"
 #include "../../../ContestAPI/app.h"
 
-UIButton::UIButton(const std::string& text, float x, float y)
+UIButton::UIButton(const std::string& text)
     : m_text(text)
     , m_text_red(255), m_text_green(255), m_text_blue(255)
     , m_bg_red(50),  m_bg_green(50),  m_bg_blue(50)
@@ -11,8 +11,6 @@ UIButton::UIButton(const std::string& text, float x, float y)
     , m_isHovered(false)
     , m_isPressed(false)
 {
-    m_xpos = x;
-    m_ypos = y;
 }
 
 void UIButton::Update(float deltaTime)

@@ -33,6 +33,7 @@ public:
     //TODO: OnFocus() and isEnabled() for keyboard inputs when using keys to focus on a button or radio
 
     bool isVisible() const { return m_visible; }
+    bool IsMouseInside(float mouse_x, float mouse_y) const;
 
 protected:
     
