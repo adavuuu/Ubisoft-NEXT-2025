@@ -43,4 +43,5 @@
 # Build files
 .vscode
 .idea
+run_game.sh
 build/
