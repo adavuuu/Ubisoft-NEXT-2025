@@ -23,8 +23,8 @@ public:
     float GetHeight() const { return m_height; }
 
     // Virtual functions for subclass override
-    virtual void Draw() {};
     virtual void Update(float deltaTime) {};
+    virtual void Draw() {};
 
     virtual void OnHover() {};
     virtual void OnUnhover() {};
