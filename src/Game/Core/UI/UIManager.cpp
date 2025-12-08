@@ -66,16 +66,7 @@ void UIManager::HandleMouseMove(float mouse_x, float mouse_y)
             continue;
         }
 
-        bool inside = element->IsMouseInside(mouse_x, mouse_y);
-
-        if (inside)
-        {
-            element->OnHover();
-        }
-        else
-        {
-            element->OnUnhover();
-        }
+        element->HandleMouseMove(mouse_x, mouse_y);
     }
 }
 
@@ -85,9 +76,7 @@ void UIManager::HandleMouseClick(float mouse_x, float mouse_y)
     {
         if (element->isVisible() && element->IsMouseInside(mouse_x, mouse_y))
         {
-            element->OnClick();
-            element->OnRelease();
-            return; 
+            element->HandleMouseClick(mouse_x, mouse_y);
         }
     }
 }

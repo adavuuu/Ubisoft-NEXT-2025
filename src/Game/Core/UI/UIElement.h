@@ -11,7 +11,7 @@ public:
 
     UIElement();
     virtual ~UIElement() = default;
-    virtual bool Initialize();
+    virtual void Initialize();
 
     void SetPosition(float x, float y) { m_xpos = x; m_ypos = y; };
     void SetSize(float width, float height) { m_width = width; m_height = height; };
@@ -31,6 +31,10 @@ public:
     virtual void OnClick() {};
     virtual void OnRelease() {};
     //TODO: OnFocus() and isEnabled() for keyboard inputs when using keys to focus on a button or radio
+
+    virtual void HandleMouseMove(float mouse_x, float mouse_y);
+    virtual void HandleMouseClick(float mouse_x, float mouse_y);
+
 
     bool isVisible() const { return m_visible; }
     bool IsMouseInside(float mouse_x, float mouse_y) const;

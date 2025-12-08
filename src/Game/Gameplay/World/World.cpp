@@ -7,6 +7,7 @@
 #include "../../Core/UI/UIManager.h"
 #include "../../Core/UI/UIText.h"
 #include "../../Core/UI/UIButton.h"
+#include "../../Core/UI/UIPanel.h"
 
 
 void World::Init()
@@ -15,28 +16,35 @@ void World::Init()
 	player->Init();
 
 	//------------------------------------------------------------------------
-	// EXAMPLE TEXT & BUTTON
+	// EXAMPLE PANEL (TEXT & BUTTON)
 	ui_manager = new UIManager();
 
 	ui_manager->Initialize();
+
+	// Example panel
+	auto panel = std::make_shared<UIPanel>();
+	panel->SetPosition(0, 50);
+	panel->SetSize(500, 500);
+	ui_manager->AddElement(panel);
 
     // Example text
     auto title = std::make_shared<UIText>("Hello UI System!");
     title->SetPosition(50, 50);
     title->SetColor(255, 255, 0);
-    ui_manager->AddElement(title);
+	ui_manager->AddElement(title);
+    panel->AddChildElement(title);
 
     // Example button
     auto button = std::make_shared<UIButton>("Start Game");
     button->SetPosition(50, 120);
     button->SetSize(200, 200);
     button->SetText("Start Game");
-    
     button->SetOnClickCallback([]() {
         std::cout << "Button pressed" << std::endl;
     });
-
-    ui_manager->AddElement(button);
+	ui_manager->AddElement(button);
+    panel->AddChildElement(button);
+	
 	//------------------------------------------------------------------------
 }
 
