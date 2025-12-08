@@ -7,9 +7,9 @@ UIManager::UIManager()
 {
 }
 
-bool UIManager::Initialize()
+void UIManager::Init()
 {
-    return true; 
+    return; 
 }
 
 void UIManager::Shutdown()
@@ -44,7 +44,7 @@ void UIManager::AddElement(const std::shared_ptr<UIElement>& element)
     if (!element)
         return;
 
-    element->Initialize();
+    element->Init();
     m_elements.push_back(element);
 }
 

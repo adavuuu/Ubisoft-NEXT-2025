@@ -8,7 +8,9 @@
 #include "../../Core/UI/UIText.h"
 #include "../../Core/UI/UIButton.h"
 #include "../../Core/UI/UIPanel.h"
+#include "../../Core/UI/UIScreen.h"
 
+std::shared_ptr<UIScreen> m_uiScreen;
 
 void World::Init()
 {
@@ -19,7 +21,9 @@ void World::Init()
 	// EXAMPLE PANEL (TEXT & BUTTON)
 	ui_manager = new UIManager();
 
-	ui_manager->Initialize();
+	ui_manager->Init();
+
+	m_uiScreen = std::make_shared<UIScreen>();
 
 	// Example panel
 	auto panel = std::make_shared<UIPanel>();
@@ -44,6 +48,9 @@ void World::Init()
     });
 	ui_manager->AddElement(button);
     panel->AddChildElement(button);
+
+	m_uiScreen->AddPanel(panel);
+	m_uiScreen->Init();
 	
 	//------------------------------------------------------------------------
 }
@@ -121,4 +128,5 @@ void World::Render()
 void World::Shutdown()
 {
 	player->Shutdown();
+	ui_manager->Shutdown();
 }

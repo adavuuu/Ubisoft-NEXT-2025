@@ -15,12 +15,13 @@ public:
     UIText(const std::string& text);
     ~UIText() override = default;
 
-    void SetText(const std::string& text) { m_text = text; };
-    void SetColor(unsigned char r, unsigned char g, unsigned char b) { m_red = r; m_green = g; m_blue = b; };
-
-     // Overrides from UIElement
+    // Overrides from UIElement
     void Update(float deltaTime) override;
     void Draw() override;
+    //-----------------------------------------------------------------------------
+
+    void SetText(const std::string& text) { m_text = text; };
+    void SetColor(unsigned char r, unsigned char g, unsigned char b) { m_red = r; m_green = g; m_blue = b; };
 
 protected:
     std::string m_text;

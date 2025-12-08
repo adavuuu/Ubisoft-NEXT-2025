@@ -3,30 +3,14 @@
 #include "UIPanel.h"
 #include "../../../ContestAPI/app.h"
 
-UIPanel::UIPanel()
-{
-}
-
-void UIPanel::Initialize()
+void UIPanel::Init()
 {
     for (auto& element : m_childElements)
     {
-        element->Initialize();
+        element->Init();
     }
 
     return;
-}
-
-void UIPanel::AddChildElement(const std::shared_ptr<UIElement> &element)
-{
-    if (!element) return;
-
-    m_childElements.push_back(element);
-}
-
-void UIPanel::RemoveChildElement(const std::shared_ptr<UIElement> &element)
-{
-    m_childElements.erase(std::remove(m_childElements.begin(), m_childElements.end(), element), m_childElements.end());
 }
 
 void UIPanel::Draw()
@@ -64,4 +48,16 @@ void UIPanel::HandleMouseClick(float mouse_x, float mouse_y)
     {
         element->HandleMouseClick(mouse_x, mouse_y);
     }
+}
+
+void UIPanel::AddChildElement(const std::shared_ptr<UIElement> &element)
+{
+    if (!element) return;
+
+    m_childElements.push_back(element);
+}
+
+void UIPanel::RemoveChildElement(const std::shared_ptr<UIElement> &element)
+{
+    m_childElements.erase(std::remove(m_childElements.begin(), m_childElements.end(), element), m_childElements.end());
 }

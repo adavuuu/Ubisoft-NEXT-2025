@@ -10,7 +10,7 @@ UIElement::UIElement()
 {
 }
 
-void UIElement::Initialize()
+void UIElement::Init()
 {
     return;
 }

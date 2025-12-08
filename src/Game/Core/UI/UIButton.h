@@ -15,13 +15,6 @@ public:
     UIButton(const std::string& text);
     ~UIButton() override = default;
 
-    void SetText(const std::string& text) { m_text = text; };
-    void SetTextColor(int r, int g, int b) { m_text_red = r; m_text_green = g; m_text_blue = b; };
-    void SetBackgroundColor(int r, int g, int b) { m_bg_red = r; m_bg_green = g; m_bg_blue = b; };
-    void SetHoverColor(int r, int g, int b) { m_hover_red = r; m_hover_green = g; m_hover_blue = b; };
-
-    void SetOnClickCallback(std::function<void()> callback) { m_clickCallback = callback; }
-
     // Overrides from UIElement
     void Update(float deltaTime) override;
     void Draw() override;
@@ -31,6 +24,14 @@ public:
     void OnClick() override;
     void OnRelease() override;
     //TODO: OnFocus() and isFocused() for keyboard inputs when using keys to focus on a button or radio
+    //-----------------------------------------------------------------------------
+
+    void SetText(const std::string& text) { m_text = text; };
+    void SetTextColor(int r, int g, int b) { m_text_red = r; m_text_green = g; m_text_blue = b; };
+    void SetBackgroundColor(int r, int g, int b) { m_bg_red = r; m_bg_green = g; m_bg_blue = b; };
+    void SetHoverColor(int r, int g, int b) { m_hover_red = r; m_hover_green = g; m_hover_blue = b; };
+
+    void SetOnClickCallback(std::function<void()> callback) { m_clickCallback = callback; }
 
 protected:
     std::string m_text;

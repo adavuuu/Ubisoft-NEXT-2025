@@ -15,7 +15,7 @@ public:
     UIManager();
     ~UIManager() = default;
 
-    bool Initialize();
+    void Init();
     void Shutdown();
 
     void Update(float deltaTime);

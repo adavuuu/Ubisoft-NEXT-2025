@@ -11,18 +11,20 @@
 class UIPanel : public UIElement
 {
 public:
-    UIPanel();
+    UIPanel() {};
     ~UIPanel() override = default;
-    void Initialize() override;
-
-    void AddChildElement(const std::shared_ptr<UIElement>& element);
-    void RemoveChildElement(const std::shared_ptr<UIElement>& element);
+    void Init() override;
 
     // Overrides from UIElement
+    void Update(float deltaTime) override {};
     void Draw() override;
 
     void HandleMouseMove(float mouse_x, float mouse_y) override;
     void HandleMouseClick(float mouse_x, float mouse_y) override;
+    //-----------------------------------------------------------------------------
+
+    void AddChildElement(const std::shared_ptr<UIElement>& element);
+    void RemoveChildElement(const std::shared_ptr<UIElement>& element);
 
 
 protected:
