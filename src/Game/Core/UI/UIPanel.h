@@ -23,10 +23,10 @@ public:
     void HandleMouseClick(float mouse_x, float mouse_y) override;
     //-----------------------------------------------------------------------------
 
-    void AddChildElement(const std::shared_ptr<UIElement>& element);
-    void RemoveChildElement(const std::shared_ptr<UIElement>& element);
+    void AddElement(const std::shared_ptr<UIElement>& element);
+    void RemoveElement(const std::shared_ptr<UIElement>& element);
 
 
 protected:
-    std::vector<std::shared_ptr<UIElement>> m_childElements;
+    std::vector<std::shared_ptr<UIElement>> m_elements;
 };

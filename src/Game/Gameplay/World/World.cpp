@@ -12,9 +12,6 @@
 
 #include "../../Screens/MainMenu.h"
 
-
-std::shared_ptr<UIScreen> m_uiScreen;
-
 void World::Init()
 {
 	player = new Player();
