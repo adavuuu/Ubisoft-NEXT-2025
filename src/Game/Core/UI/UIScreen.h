@@ -14,7 +14,7 @@ class UIScreen
 {
 public:
     UIScreen() {};
-    ~UIScreen() = default;
+    virtual ~UIScreen() = default;
 
     void Init();
     void Update(float deltaTime) {};

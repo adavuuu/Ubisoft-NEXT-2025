@@ -37,6 +37,11 @@ void UIManager::Draw()
             element->Draw();
         }
     }
+
+    if (m_activeScreen)
+    {
+        m_activeScreen->Draw();
+    }
 }
 
 void UIManager::AddElement(const std::shared_ptr<UIElement>& element)
@@ -55,6 +60,26 @@ void UIManager::RemoveElement(const std::shared_ptr<UIElement>& element)
     {
         m_elements.erase(it); // shared_ptr handles deletion
     }
+}
+
+void UIManager::AddScreen(const std::string& name, std::shared_ptr<UIScreen> screen)
+{
+    m_screens[name] = screen;
+}
+
+void UIManager::SetActiveScreen(const std::string& name)
+{
+    auto it = m_screens.find(name);
+    if (it != m_screens.end())
+    {
+        m_activeScreen = it->second;
+        m_activeScreen->Init();
+    }
+}
+
+void UIManager::ClearActiveScreen()
+{
+    m_activeScreen = nullptr;
 }
 
 void UIManager::HandleMouseMove(float mouse_x, float mouse_y)
