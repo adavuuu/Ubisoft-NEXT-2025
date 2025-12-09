@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
-// MainMenu.h
-// Main Menu UI holding all its UI Elements
+// Options.h
+// Options UI screen holding all its UI Elements (settings)
 //-----------------------------------------------------------------------------
 #pragma once
 
@@ -12,13 +12,13 @@
 
 class UIManager;
 
-class MainMenu : public UIScreen
+class Options : public UIScreen
 {
 public:
-     MainMenu(UIManager* manager);
-    ~MainMenu() override = default;
+     Options(UIManager* owner);
+    ~Options() override = default;
 
-protected:
+private:
     std::shared_ptr<UIPanel> m_panel;
 
     UIManager* m_UIManager;

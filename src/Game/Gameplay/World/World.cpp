@@ -11,6 +11,8 @@
 #include "../../Core/UI/UIScreen.h"
 
 #include "../../Screens/MainMenu.h"
+#include "../../Screens/Options.h"
+
 
 void World::Init()
 {
@@ -23,9 +25,11 @@ void World::Init()
 
 	ui_manager->Init();
 
-	auto mainMenu = std::make_shared<MainMenu>();
+	auto mainMenu = std::make_shared<MainMenu>(ui_manager);
     ui_manager->AddScreen("MainMenu", mainMenu);
 	ui_manager->SetActiveScreen("MainMenu");
+	auto options = std::make_shared<Options>(ui_manager);
+    ui_manager->AddScreen("Options", options);
 
 	// m_uiScreen = std::make_shared<UIScreen>();
 

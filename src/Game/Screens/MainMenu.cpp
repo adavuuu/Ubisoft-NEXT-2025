@@ -1,8 +1,11 @@
 #include <iostream>
 #include "MainMenu.h"
+#include "../Core/UI/UIManager.h"
 #include "../../ContestAPI/app.h"
 
-MainMenu::MainMenu()
+MainMenu::MainMenu(UIManager* manager)
+    : UIScreen(manager)
+    , m_UIManager(manager)
 {
     // --- Create root panel ---
     m_panel = std::make_shared<UIPanel>();
@@ -30,6 +33,16 @@ MainMenu::MainMenu()
     // });
 
     m_panel->AddElement(startBtn);
+
+    // --- Start button ---
+    auto optionsBtn = std::make_shared<UIButton>("Options");
+    optionsBtn->SetPosition(150, 215);
+    optionsBtn->SetSize(300, 50);
+    optionsBtn->SetOnClickCallback([this]() {
+        m_UIManager->SetActiveScreen("Options");
+    });
+
+    m_panel->AddElement(optionsBtn);
 
     // --- Quit button ---
     auto quitBtn = std::make_shared<UIButton>("Quit");

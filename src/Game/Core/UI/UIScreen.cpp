@@ -3,6 +3,11 @@
 #include "UIScreen.h"
 #include "../../../ContestAPI/app.h"
 
+UIScreen::UIScreen(UIManager* manager)
+    : m_UIManager(manager)
+{
+}
+
 void UIScreen::Init()
 {
     for (auto& panel : m_panels)

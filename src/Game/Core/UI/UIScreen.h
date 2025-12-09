@@ -10,10 +10,12 @@
 #include "UIElement.h"
 #include "UIPanel.h"
 
+class UIManager; // forward declare
+
 class UIScreen
 {
 public:
-    UIScreen() {};
+    UIScreen(UIManager* manager);
     virtual ~UIScreen() = default;
 
     void Init();
@@ -33,5 +35,7 @@ public:
 protected:
     bool m_visible = true;
 
+    UIManager* m_UIManager;
+    
     std::vector<std::shared_ptr<UIPanel>> m_panels;
 };
