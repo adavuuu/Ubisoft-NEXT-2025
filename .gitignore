@@ -43,5 +43,6 @@
 # Build files
 .vscode
 .idea
+**/.DS_Store
 run_game.sh
 build/
