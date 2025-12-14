@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include "Core/Input/InputManager.h"
+
 class CSimpleSprite;
 
 void Player::Init()
@@ -17,13 +19,13 @@ void Player::Init()
 	//------------------------------------------------------------------------ 
 }
 
-void Player::Update(const float deltaTime)
+void Player::Update(const float deltaTime, InputManager& inputManager)
 {
 	if (testSprite != nullptr) {
 		//------------------------------------------------------------------------
 		// Example Sprite Code....
 		testSprite->Update(deltaTime);
-		if (App::GetController().GetLeftThumbStickX() > 0.5f)
+		if (inputManager.IsActionInputted(ACTION_MOVE_RIGHT))
 		{
 			testSprite->SetAnimation(ANIM_RIGHT);
 			float x, y;
@@ -31,7 +33,7 @@ void Player::Update(const float deltaTime)
 			x += 1.0f;
 			testSprite->SetPosition(x, y);
 		}
-		if (App::GetController().GetLeftThumbStickX() < -0.5f)
+		if (inputManager.IsActionInputted(ACTION_MOVE_LEFT))
 		{
 			testSprite->SetAnimation(ANIM_LEFT);
 			float x, y;
@@ -39,7 +41,7 @@ void Player::Update(const float deltaTime)
 			x -= 1.0f;
 			testSprite->SetPosition(x, y);
 		}
-		if (App::GetController().GetLeftThumbStickY() > 0.5f)
+		if (inputManager.IsActionInputted(ACTION_MOVE_FORWARD))
 		{
 			testSprite->SetAnimation(ANIM_FORWARDS);
 			float x, y;
@@ -47,7 +49,7 @@ void Player::Update(const float deltaTime)
 			y += 1.0f;
 			testSprite->SetPosition(x, y);
 		}
-		if (App::GetController().GetLeftThumbStickY() < -0.5f)
+		if (inputManager.IsActionInputted(ACTION_MOVE_BACKWARD))
 		{
 			testSprite->SetAnimation(ANIM_BACKWARDS);
 			float x, y;
@@ -55,24 +57,23 @@ void Player::Update(const float deltaTime)
 			y -= 1.0f;
 			testSprite->SetPosition(x, y);
 		}
-
-		if (App::GetController().CheckButton(App::BTN_DPAD_UP, false))
+		if (inputManager.IsActionInputted(ACTION_SCALE_UP))
 		{
 			testSprite->SetScale(testSprite->GetScale() + 0.1f);
 		}
-		if (App::GetController().CheckButton(App::BTN_DPAD_DOWN, false))
+		if (inputManager.IsActionInputted(ACTION_SCALE_DOWN))
 		{
 			testSprite->SetScale(testSprite->GetScale() - 0.1f);
 		}
-		if (App::GetController().CheckButton(App::BTN_DPAD_LEFT, false))
+		if (inputManager.IsActionInputted(ACTION_ROTATE_LEFT))
 		{
 			testSprite->SetAngle(testSprite->GetAngle() + 0.1f);
 		}
-		if (App::GetController().CheckButton(App::BTN_DPAD_RIGHT, false))
+		if (inputManager.IsActionInputted(ACTION_ROTATE_RIGHT))
 		{
 			testSprite->SetAngle(testSprite->GetAngle() - 0.1f);
 		}
-		if (App::GetController().CheckButton(App::BTN_A, true))
+		if (inputManager.IsActionInputted(ACTION_STOP))
 		{
 			testSprite->SetAnimation(-1);
 		}

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <GL/freeglut.h>
 
 #include "World.h"
 
@@ -9,6 +8,7 @@
 #include "../../Core/UI/UIButton.h"
 #include "../../Core/UI/UIPanel.h"
 #include "../../Core/UI/UIScreen.h"
+#include "../../Core/Input/InputManager.h"
 
 #include "../../Screens/MainMenu.h"
 #include "../../Screens/Options.h"
@@ -59,35 +59,36 @@ void World::Init()
 
 	// m_uiScreen->AddPanel(panel);
 	// m_uiScreen->Init();
-	
-	// //------------------------------------------------------------------------
+
+	//------------------------------------------------------------------------
+	input_manager = new InputManager();
+	input_manager->Init();
 }
 
 void World::Update(const float deltaTime)
 {
-	player->Update(deltaTime);
+	player->Update(deltaTime, *input_manager);
 
 	//------------------------------------------------------------------------
 	// Sample Sound.
 	//------------------------------------------------------------------------
-	if (App::GetController().CheckButton(App::BTN_B, true))
+	if (input_manager->IsActionInputted(ACTION_PLAY))
 	{
 		App::PlayAudio("./Data/TestData/Test.wav", true);
 	}
-	if (App::GetController().CheckButton(App::BTN_X, true))
+	if (input_manager->IsActionInputted(ACTION_PAUSE))
 	{
 		App::StopAudio("./Data/TestData/Test.wav");
 	}
 
 	//------------------------------------------------------------------------
 	// EXAMPLE TEXT & BUTTON
-	float mouseX, mouseY;
-	App::GetMousePos(mouseX, mouseY);
-	mouseY = glutGet(GLUT_WINDOW_HEIGHT) - mouseY;
+	float mouseX = input_manager->GetMousePosX();
+	float mouseY = input_manager->GetMousePosY();
 
 	ui_manager->HandleMouseMove(mouseX, mouseY);
 
-	if (App::IsMousePressed(GLUT_LEFT_BUTTON))
+	if (input_manager->IsActionInputted(ACTION_SELECT))
 	{
 		ui_manager->HandleMouseClick(mouseX, mouseY);
 	}
@@ -132,4 +133,9 @@ void World::Shutdown()
 {
 	player->Shutdown();
 	ui_manager->Shutdown();
+	input_manager->Shutdown();
+
+	delete player;
+	delete ui_manager;
+	delete input_manager;
 }
