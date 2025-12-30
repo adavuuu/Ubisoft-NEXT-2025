@@ -4,26 +4,21 @@
 //-----------------------------------------------------------------------------
 #pragma once
 
-#include "../../../ContestAPI/app.h"
+#include "../Game/Core/Entity/Entity.h"
 
 class InputManager;
+class CSimpleSprite;
 
-class Player
+class Player : public Entity
 {
-
 public:
-    void Init();
-    void Update(const float deltaTime, InputManager& inputManager);
-    void Render();
-    void Shutdown();
+	~Player() override = default;
+
+    void Init() override;
+    void Update(float deltaTime, InputManager& inputManager) override;
+    void Render() override;
+    void Shutdown() override;
 
 private:
-    CSimpleSprite *testSprite = nullptr;
-    enum
-    {
-	    ANIM_FORWARDS,
-	    ANIM_BACKWARDS,
-	    ANIM_LEFT,
-	    ANIM_RIGHT,
-    };
+    CSimpleSprite* m_sprite = nullptr;
 };

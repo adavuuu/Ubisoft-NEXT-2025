@@ -16,8 +16,8 @@
 
 void World::Init()
 {
-	player = new Player();
-	player->Init();
+	// Create a new player (will call Init inside)
+	player = spawnEntity<Player>();
 
 	//------------------------------------------------------------------------
 	// EXAMPLE PANEL (TEXT & BUTTON)
@@ -67,7 +67,14 @@ void World::Init()
 
 void World::Update(const float deltaTime)
 {
-	player->Update(deltaTime, *input_manager);
+	// Update all entities
+	for (auto& entity : m_entities)
+	{
+		if (entity->IsAlive())
+		{
+			entity->Update(deltaTime, *input_manager);
+		}
+	}
 
 	//------------------------------------------------------------------------
 	// Sample Sound.
@@ -98,7 +105,13 @@ void World::Update(const float deltaTime)
 
 void World::Render()
 {
-	player->Render();
+	for (auto& entity : m_entities)
+	{
+		if (entity->IsAlive())
+		{
+			entity->Render();
+		}
+	}
 
 	// //------------------------------------------------------------------------
 	// // Example Line Drawing.
@@ -131,11 +144,16 @@ void World::Render()
 
 void World::Shutdown()
 {
-	player->Shutdown();
 	ui_manager->Shutdown();
 	input_manager->Shutdown();
 
-	delete player;
 	delete ui_manager;
 	delete input_manager;
+
+	// No need to delete/shutdown each entity manually, since they are stored as unique_ptrs
+	for (auto& entity : m_entities)
+	{
+		entity->Shutdown();
+	}
+	m_entities.clear();
 }
