@@ -4,11 +4,9 @@
 //-----------------------------------------------------------------------------
 #pragma once
 
-#include "../../../ContestAPI/app.h"
-#include <GLUT/glut.h>
-
 class Player;
 class UIManager;
+class InputManager;
 
 class World
 {
@@ -21,4 +19,5 @@ public:
 private:
     Player* player = nullptr;
     UIManager* ui_manager = nullptr;
+    InputManager* input_manager = nullptr;
 };

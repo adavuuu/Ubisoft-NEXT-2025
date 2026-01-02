@@ -6,12 +6,14 @@
 
 #include "../../../ContestAPI/app.h"
 
+class InputManager;
+
 class Player
 {
 
 public:
     void Init();
-    void Update(const float deltaTime);
+    void Update(const float deltaTime, InputManager& inputManager);
     void Render();
     void Shutdown();
 
